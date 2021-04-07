@@ -51,8 +51,8 @@ int main()
       slew_select();
       d1 = float(freq_state*0.9/10000);
       d2 = float(freq_state*0.9/10000);
-      //queue_wave_generator.call(wave_generator);
-      wave_generator();
+      queue_wave_generator.call(wave_generator);
+      //wave_generator();
     } // end of while loop
 
 } // end of main
