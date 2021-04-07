@@ -9,7 +9,7 @@ uLCD_4DGL uLCD(D1, D0, D2); // serial tx, serial rx, reset pin;
 AnalogOut aout(D7);
 AnalogIn Ain(A0);
 
-float ADCdata[270];
+float ADCdata[100];
 EventQueue queue_wave_generator(32 * EVENTS_EVENT_SIZE);
 EventQueue queue_ADC_sampling(32 * EVENTS_EVENT_SIZE);
 EventQueue queue_screen_print(32 * EVENTS_EVENT_SIZE);
@@ -45,14 +45,14 @@ int main()
     
     aout = 0.0;
     
-    //queue_ADC_sampling.call(ADC_sampling);
+    queue_ADC_sampling.call(ADC_sampling);
 
     while (1) {
       slew_select();
       d1 = float(freq_state*0.9/10000);
       d2 = float(freq_state*0.9/10000);
-      queue_wave_generator.call(wave_generator);
-      
+      //queue_wave_generator.call(wave_generator);
+      wave_generator();
     } // end of while loop
 
 } // end of main
